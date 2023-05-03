@@ -9,13 +9,13 @@ function startGame() {
 }
 
 function showStoryNote(storyNoteIndex) {
-    const storyNote = storyNote.find(storyNote => storyNote.id === storyNoteIndex)
+    const storyNote = storyNotes.find(storyNote => storyNote.id === storyNoteIndex)
     textElement.innerText = storyNote.text
     while(optionbuttonsElement.firstchild) {
         optionbuttonsElement.removeChild(optionsButtonsElement.firstChild)
     }
 
-    storyNotes.options.foreach(option => {
+    storyNote.options.foreach(option => {
         if (showOption(option)) {
             const button = document.createElement(`button`)
             button.innerText = option.text
@@ -36,7 +36,7 @@ function selectOption(option) {
     showStoryNoteId(nextStoryNoteId)
 }
 
-const storyNote = [
+const storyNotes = [
     {
         id: 1,
         text: `Welcome to LabRat, a text-based game that put you in the shoes of an unvilling subject in a crazy experiment.
@@ -45,7 +45,7 @@ const storyNote = [
         will you be able to escape? there is only one way to find out
 
         are you ready to begin?`,
-        option: [
+        options: [
             {
                 text: `yes`,
                 nextText: 2
@@ -65,7 +65,7 @@ const storyNote = [
         text: `You find yourself lying on a metal gurney in a cold sterile room with semingly no windows or doors. the walls are made of large metal plates, and the only source of light comes from a single lightbulb dangling from the ceiling. you try to remember how you got here, but your memory is fuzzy.
         
         what do you do?`,
-        option: [
+        options: [
             {
                 text:`Inspect self`,
                 nextText: 5
@@ -89,7 +89,7 @@ const storyNote = [
         text: `Hmph! Alright the. If you don´t want to play, then why are you even here!? Go do something mere "valuable" with your time the!
         
         ...I´m sorry. I got a little grumpy there. Come back when you´re ready to play`,
-        option: [
+        options: [
             {
                 text:`Start game`,
                 nextText: 1
@@ -102,7 +102,7 @@ const storyNote = [
         Are you perhaps scared? Then I guess you can just cower in fear like a pathethic rat!
         
         ...I apoligize. I promise, I´m working on my temper.`,
-        option: [
+        options: [
             {
                 text:`I´m not scared! Let´s begin!`,
                 nextText: 2
